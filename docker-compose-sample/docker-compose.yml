@@ -1,0 +1,32 @@
+services:
+  postgres:
+    container_name: postgres
+    image: 'api.repoflow.io/herd.io/docker/postgres:13.16'
+    user: 1000:1000
+    ports:
+      - '5432:5432'
+    command: postgres -c config_file=/etc/postgresql/postgresql.conf
+    environment:
+      # Se nenhuma base de dados for especificada, a imagem Docker do PostgreSQL criará uma padrão
+      # usando a variável $POSTGRES_USER.
+      - POSTGRES_DB=test
+      - POSTGRES_USER=test
+      - POSTGRES_PASSWORD=test
+
+    volumes:
+      # Para que a imagem Postgres consiga identificar o usuário configurado no parâmetro "user: xxxx:xxxx".
+      - /etc/passwd:/etc/passwd:ro
+      - ./data:/var/lib/postgresql/data
+      - ./logs:/var/log/postgresql
+      - ./scripts:/scripts
+
+      # Descomentar a linha abaixo caso deseje modificar algum parâmetro de configuração do PostgreSQL.
+      # Usar como referência o arquivo presente na imagem, no caminho /etc/postgresql/postgresql.conf.
+      #- ./postgresql.conf:/etc/postgresql/postgresql.conf
+
+    networks:
+      - postgres-net
+
+networks:
+  postgres-net:
+    driver: bridge
