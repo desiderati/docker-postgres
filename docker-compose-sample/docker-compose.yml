@@ -1,7 +1,7 @@
 services:
   postgres:
     container_name: postgres
-    image: 'api.repoflow.io/herd.io/docker/postgres:13.16'
+    image: 'api.repoflow.io/desiderati/docker/postgres:13.16'
     user: 1000:1000
     ports:
       - '5432:5432'

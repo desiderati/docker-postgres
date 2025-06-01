@@ -16,20 +16,20 @@ A robust and production-ready Docker image for PostgreSQL, designed for easy int
 
 3. After the build completes, tag your image, so you can push the image to your repository:
 
-   `docker tag postgres:13.16 api.repoflow.io/herd.io/docker/postgres:13.16`
-   `docker tag postgres:13.16 api.repoflow.io/herd.io/docker/postgres:latest`
+   `docker tag postgres:13.16 api.repoflow.io/desiderati/docker/postgres:13.16`
+   `docker tag postgres:13.16 api.repoflow.io/desiderati/docker/postgres:latest`
 
 4. Run the following command to push this image to your repository:
 
-   `docker push api.repoflow.io/herd.io/docker/postgres:13.16`
-   `docker push api.repoflow.io/herd.io/docker/postgres:latest`
+   `docker push api.repoflow.io/desiderati/docker/postgres:13.16`
+   `docker push api.repoflow.io/desiderati/docker/postgres:latest`
 
 ### Example
 
    ```
    docker build --progress=plain -t postgres:13.16 .
-   docker tag postgres:13.16 api.repoflow.io/herd.io/docker/postgres:13.16
-   docker tag postgres:13.16 api.repoflow.io/herd.io/docker/postgres:latest
-   docker push api.repoflow.io/herd.io/docker/postgres:13.16
-   docker push api.repoflow.io/herd.io/docker/postgres:latest
+   docker tag postgres:13.16 api.repoflow.io/desiderati/docker/postgres:13.16
+   docker tag postgres:13.16 api.repoflow.io/desiderati/docker/postgres:latest
+   docker push api.repoflow.io/desiderati/docker/postgres:13.16
+   docker push api.repoflow.io/desiderati/docker/postgres:latest
    ```
