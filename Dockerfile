@@ -1,4 +1,4 @@
-FROM postgres:13.16
+FROM postgres:17
 
 ADD template-names/ /var/lib/postgresql/template-names/
 

@@ -10,7 +10,7 @@
         Informações meramente ilustrativas!
         Antes de mudar a versão aqui, lembre-se de mudar a versão no arquivo README.md!!!
     -->
-    <version>13.16</version>
+    <version>17</version>
     <packaging>pom</packaging>
 
     <properties>
