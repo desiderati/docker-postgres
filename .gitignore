@@ -207,4 +207,3 @@ activemq/
 
 docker-compose-sample/data/
 docker-compose-sample/logs/
-docker-compose-sample/scripts/

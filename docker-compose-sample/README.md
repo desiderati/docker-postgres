@@ -1,23 +1,18 @@
-### Know Issues
+# Known Issues
 
-1) **Error ao inicializar o banco de dados: diretório de dados não acessível.**
+## 1) **Error initializing the database: data directory not accessible.**
 
-   ```
-   postgres  | initdb: could not change permissions of directory "/var/lib/postgresql/data": Operation not permitted
-   ```
+> postgres | initdb: could not change permissions of directory "/var/lib/postgresql/data": Operation not permitted
 
-    - **Razão**: Provavelmente o volume mapeado `./data:/var/lib/postgresql/data` foi criado com as permissões
-      erradas.
+### Reason: The mapped volume `./data:/var/lib/postgresql/data` was probably created with incorrect permissions.
 
-      Exemplo:
+```yml
+volumes:
+  - ./data:/var/lib/postgresql/data
+```
 
-      ```yml
-      volumes:
-        - ./data:/var/lib/postgresql/data
-      ```
+### Resolution: Run the file `init.sh`.
 
-    - **Resolução**: Executar os arquivos: **init.sh** e **postinstall.sh**.
-
-      ```shell
-      $ ./init.sh && ./postinstall.sh
-      ```
+```bash
+$ ./init.sh
+```

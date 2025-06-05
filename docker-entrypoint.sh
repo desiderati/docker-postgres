@@ -1,8 +1,27 @@
 #!/bin/bash
+#
+# Copyright (c) 2025 - Felipe Desiderati
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy of this software and
+# associated documentation files (the "Software"), to deal in the Software without restriction,
+# including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense,
+# and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so,
+# subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all copies or substantial
+# portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT
+# LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+# IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+# WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+# SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+#
+
 set -e
 
-# Por padrão, a imagem do PostgreSQL criará uma tabela de acordo com a variável $POSTGRES_DB.
-# Se esta variável não estiver definida, a tabela será criada de acordo com a variável $POSTGRES_USER.
+# By default, the PostgreSQL Docker Image will create a database according to the $POSTGRES_DB variable.
+# If this variable is not defined, the database will be created based on the $POSTGRES_USER variable.
 if [[ -n "$POSTGRES_DB" ]]; then # True if the length of string is non-zero.
   defaultDbName=${POSTGRES_DB}
 else
@@ -19,8 +38,8 @@ for file in ${FILES}; do
     dbname=$(echo "$file" | cut -f 4 -d '/' | cut -f 1 -d '.')
     echo " +dbname: $dbname"
 
-    # Não há necessidade de criar a base de dados padrão.
-    # A mesma já é criada pela imagem do Postgres.
+    # There is no need to create the default database.
+    # It is already created by the Postgres Docker Image.
     if [[ ! ${dbname} == "${defaultDbName}" ]]; then
 psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "$POSTGRES_DB" <<-EOSQL
   CREATE DATABASE ${dbname} OWNER ${POSTGRES_USER};
@@ -40,8 +59,8 @@ for file in ${FILES}; do
     dbname=$(echo "$file" | cut -f 4 -d '/' | cut -f 1 -d '.')
     echo " +dbname: $dbname"
 
-    # Não há necessidade de criar a base de dados padrão.
-    # A mesma já é criada pela imagem do Postgres.
+    # There is no need to create the default database.
+    # It is already created by the Postgres Docker Image.
     if [[ ! ${dbname} == "${defaultDbName}" ]]; then
 psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "$POSTGRES_DB" <<-EOSQL
   CREATE DATABASE ${dbname} OWNER ${POSTGRES_USER};

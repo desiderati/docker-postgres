@@ -7,21 +7,21 @@ services:
       - '5432:5432'
     command: postgres -c config_file=/etc/postgresql/postgresql.conf
     environment:
-      # Se nenhuma base de dados for especificada, a imagem Docker do PostgreSQL criará uma padrão
-      # usando a variável $POSTGRES_USER.
+      # If no database is specified, the PostgreSQL Docker Image will create a default one
+      # using the $POSTGRES_USER variable.
       - POSTGRES_DB=test
       - POSTGRES_USER=test
       - POSTGRES_PASSWORD=test
 
     volumes:
-      # Para que a imagem Postgres consiga identificar o usuário configurado no parâmetro "user: xxxx:xxxx".
+      # To allow the Postgres Docker Image to identify the user configured in the "user: xxxx:xxxx" parameter.
       - /etc/passwd:/etc/passwd:ro
       - ./data:/var/lib/postgresql/data
       - ./logs:/var/log/postgresql
       - ./scripts:/scripts
 
-      # Descomentar a linha abaixo caso deseje modificar algum parâmetro de configuração do PostgreSQL.
-      # Usar como referência o arquivo presente na imagem, no caminho /etc/postgresql/postgresql.conf.
+      # Uncomment the line below if you want to modify any PostgreSQL configuration parameter.
+      # Use the file located at /etc/postgresql/postgresql.conf inside the image as a reference.
       #- ./postgresql.conf:/etc/postgresql/postgresql.conf
 
     networks:
