@@ -1,7 +1,7 @@
-# docker-postgres
+# Custom Docker Image for PostgreSQL
 
-A robust and production-ready Docker image for PostgreSQL 17, designed for easy integration, 
-data persistence, and secure configuration. 
+A robust and production-ready Docker image for PostgreSQL, designed for easy integration,
+data persistence, and secure configuration.
 Perfect for development, testing, or production environments that require a reliable relational database.
 
 ## Features
@@ -43,13 +43,13 @@ The image supports the following volume mounts:
 
 The image supports two types of initialization scripts:
 
-1. **Database Dumps (.dump files)**: Place your .dump files in the `/scripts/init-db/` directory. 
+1. **Database Dumps (.dump files)**: Place your .dump files in the `/scripts/init-db/` directory.
    The filename should match the database name (e.g., `mydb.dump`).
 
-2. **SQL Scripts (.sql files)**: 
-   - Place database initialization scripts in `/scripts/init-db/`.
-     The filename should match the database name (e.g., `mydb.sql`).
-   - Place post-initialization scripts in `/scripts/`. The filename should match the database name (e.g., `mydb.sql`).
+2. **SQL Scripts (.sql files)**:
+    - Place database initialization scripts in `/scripts/init-db/`.
+      The filename should match the database name (e.g., `mydb.sql`).
+    - Place post-initialization scripts in `/scripts/`. The filename should match the database name (e.g., `mydb.sql`).
 
 ## Docker Compose Example
 
@@ -72,7 +72,7 @@ services:
       - ./data:/var/lib/postgresql/data
       - ./logs:/var/log/postgresql
       - ./scripts:/scripts
-      
+
       # Uncomment the line below if you want to modify any PostgreSQL configuration parameter.
       # Use the file in the image at /etc/postgresql/postgresql.conf as a reference.
       #- ./postgresql.conf:/etc/postgresql/postgresql.conf
@@ -169,7 +169,10 @@ If your data is not persisting between container restarts:
    docker push api.repoflow.io/desiderati/docker/postgres:latest
    ```
 
-## License
+## Author
 
-This project is licensed under the MIT License.
+Felipe Desiderati <felipedesiderati@springbloom.dev> (https://github.com/desiderati)
 
+## [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.

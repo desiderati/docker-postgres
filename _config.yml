@@ -1,0 +1,4 @@
+title: Custom Docker Image for PostgreSQL
+description: A robust and production-ready Docker image for PostgreSQL, designed for easy integration, data persistence, and secure configuration
+show_downloads: false
+theme: jekyll-theme-cayman
