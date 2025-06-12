@@ -1,4 +1,4 @@
-# Custom Docker Image for PostgreSQL
+# Custom Docker Image for PostgreSQL [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 A robust and production-ready Docker image for PostgreSQL, designed for easy integration,
 data persistence, and secure configuration.
@@ -172,7 +172,3 @@ If your data is not persisting between container restarts:
 ## Author
 
 Felipe Desiderati <felipedesiderati@springbloom.dev> (https://github.com/desiderati)
-
-## [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
